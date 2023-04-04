@@ -23,6 +23,11 @@
 - declare vars with `:=`
 - build a string with placeholder values `%q` (q: double quotes)
 - define constants with `const`
+- Use a _named return value_ and avoid explicitly declaring it in the method body
+  - it will be assigned the empty value of the type, eg `""` or `0`
+  - `return` will return the _named return value_, no need to explicitly return the var
+  - it will be automatically added to the Go Doc
+- public funcs are announced in `PascalCase` and private funcs are whispered in `camelCase`
 
 **TDD Cycle**
 
