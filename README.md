@@ -24,7 +24,7 @@
     fmt.Println(sum)
     // Output: 6
     }
-```
+  ```
 
 *General Go tips...*
 
@@ -44,3 +44,26 @@
 2. Run the test -> Check the error message
 3. Write enough to make it pass
 4. Refactor
+
+### Benchmarking
+
+`b testing.B` -> `b.N` executes the benchmark code n times & measures the time is takes.
+run from the containing directory:
+
+```go
+func BenchmarkRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Repeat("❤️")
+	}
+}
+```
+```bash
+% go test -bench=.
+
+goos: darwin
+goarch: arm64
+pkg: hello/iteration
+BenchmarkRepeat-8       14493148                82.71 ns/op
+PASS
+ok      hello/iteration 2.430s
+```
