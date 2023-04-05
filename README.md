@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/iteration)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/arrays-and-slices#:~:text=change%20SumAll%20to-,SumAllTails,-%2C%20where%20it%20will)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -23,9 +23,8 @@
     sum := Add(1, 5)
     fmt.Println(sum)
     // Output: 6
-    }
-  ```
-
+    } ```
+    
 *General Go tips...*
 
 - command for running `go test` is `go mod init SOMENAME`
