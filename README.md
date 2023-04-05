@@ -89,7 +89,9 @@ myArray1 := [5]int{1, 2, 3, 4, 5}
 myArray2 := [...]int{1, 2, 3, 4, 5}
 
 // use slices for collections of variable length
-mySlice := []int{1, 2, 3, 4, 5}
+mySlice1 := []int{1, 2, 3, 4, 5}
+// or like this
+mySlice2 := make([]int, 5)
 ```
 **Arrays...**
 
@@ -98,3 +100,11 @@ mySlice := []int{1, 2, 3, 4, 5}
 - `range` lets you use syntax like for number in numbers
   - `for _, number := range numbers { //do something }}`
 - arrays of different sizes are **different types**
+
+**Slices**
+
+- you can't use equality operators (`==` etc), you can use `reflect.DeepEqual` instead
+  - DeepEquals isn't type safe so will compile even when types are mismatched
+  - (but your test should fail...!)
+- use `slice[index]` to get the value at that index 
+  - or, set a value at that index `slice[index] = 19`
