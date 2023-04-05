@@ -68,17 +68,33 @@ PASS
 ok      hello/iteration 2.430s
 ```
 
+### Coverage
+
+Go has a built-in coverage tool, you can run in the terminal - really helpful to check you're not losing coverage when deleting tests
+
+```bash
+% go test -cover    
+PASS
+        hello/arraysandslices   coverage: 100.0% of statements
+ok      hello/arraysandslices   0.129s
+```
+
 ### Arrays
 
-fixed capacity defined when declared
+Arrays have a fixed capacity which is defined when declared:
 ```go
 // that could look like this
-numbers1 := [5]int{1, 2, 3, 4, 5}
+myArray1 := [5]int{1, 2, 3, 4, 5}
 // or like this
-numbers2 := [...]int{1, 2, 3, 4, 5}
+myArray2 := [...]int{1, 2, 3, 4, 5}
+
+// use slices for collections of variable length
+mySlice := []int{1, 2, 3, 4, 5}
 ```
+**Arrays...**
 
 - the `%v` placeholder works well for arrays
 - use `array[index]` to get the value at that index
 - `range` lets you use syntax like for number in numbers
   - `for _, number := range numbers { //do something }}`
+- arrays of different sizes are **different types**
