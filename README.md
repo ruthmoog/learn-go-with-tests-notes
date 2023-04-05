@@ -67,3 +67,18 @@ BenchmarkRepeat-8       14493148                82.71 ns/op
 PASS
 ok      hello/iteration 2.430s
 ```
+
+### Arrays
+
+fixed capacity defined when declared
+```go
+// that could look like this
+numbers1 := [5]int{1, 2, 3, 4, 5}
+// or like this
+numbers2 := [...]int{1, 2, 3, 4, 5}
+```
+
+- the `%v` placeholder works well for arrays
+- use `array[index]` to get the value at that index
+- `range` lets you use syntax like for number in numbers
+  - `for _, number := range numbers { //do something }}`
