@@ -28,6 +28,22 @@ func TestSumAll(t *testing.T) {
 	}
 }
 
+func TestRuthCanDoSlices(t *testing.T) {
+	x := []string{"Ruth", "Pepper", "Elodie", "Chris", "Chris W", "Sarah", "Milo"}
+
+	assertSliceEqual := func(t testing.TB, got, want []string) {
+		t.Helper()
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v, want %v", got, want)
+		}
+	}
+
+	assertSliceEqual(t, x[1:], []string{"Pepper", "Elodie", "Chris", "Chris W", "Sarah", "Milo"})
+	assertSliceEqual(t, x[len(x)-1:], []string{"Milo"})
+	assertSliceEqual(t, x[:1], []string{"Ruth"})
+
+}
+
 func TestSumAllTails(t *testing.T) {
 	checkSums := func(t testing.TB, got, want []int) {
 		t.Helper()
