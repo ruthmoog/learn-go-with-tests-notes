@@ -109,3 +109,5 @@ mySlice2 := make([]int, 5)
   - or, set a value at that index `slice[index] = 19`
   - setting a value to an index that doesn't exist yet will throw a `runtime error`
   - so, use `append` instead, `slice = append(slice, 19)
+- `slice[low:high]` slices the contents of the slice into a spanning chunk
+  - leave blank on one of the sides of the `:` to capture everything to that side of it
