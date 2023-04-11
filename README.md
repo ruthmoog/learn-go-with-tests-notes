@@ -127,3 +127,14 @@ mySlice2 := make([]int, 5)
       Width  float64
       Height float64
     }``` 
+    
+**Interfaces**
+
+- interface resolution is implicit
+- If the type you pass in matches what the interface is asking for, it will compile
+- Declare an interface like,
+  - ```Go
+    type Shape interface {
+    Area() float64
+    }```
+- using interfaces to declare only **what you need** is important design
