@@ -29,13 +29,16 @@
 
 - command for running `go test` is `go mod init SOMENAME`
 - declare vars with `:=`
-- build a string with placeholder values `%q` (q: double quotes)
+- build a string with placeholder values `%q` (q: double quotes) [see fmt package](https://pkg.go.dev/fmt)
 - define constants with `const`
 - Use a _named return value_ and avoid explicitly declaring it in the method body
   - it will be assigned the empty value of the type, eg `""` or `0`
   - `return` will return the _named return value_, no need to explicitly return the var
   - it will be automatically added to the Go Doc
 - public funcs are announced in `PascalCase` and private funcs are whispered in `camelCase`
+- Go does not allow method overloading;
+  - you can have methods with the same name in their own packages
+  - you can define methods on the type instead, eg shapes' _Rectangle struct_
 
 **TDD Cycle**
 
@@ -111,3 +114,16 @@ mySlice2 := make([]int, 5)
   - so, use `append` instead, `slice = append(slice, 19)
 - `slice[low:high]` slices the contents of the slice into a spanning chunk
   - leave blank on one of the sides of the `:` to capture everything to that side of it
+
+## Structs, methods & interfaces
+
+**Structs**
+
+- A struct is a named collection of fields where you can store data.
+- Can use a struct to create a simple type, eg _rectangle_
+- Declare a struct like this,
+  - ```go
+    type Rectangle struct {
+      Width  float64
+      Height float64
+    }``` 
