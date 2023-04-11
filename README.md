@@ -126,7 +126,19 @@ mySlice2 := make([]int, 5)
     type Rectangle struct {
       Width  float64
       Height float64
-    }``` 
+    }
+  ``` 
+- Or an anonymous struct, for example,
+  - ```go
+    // We are declaring a slice of structs by using []struct with two fields
+    areaTests := []struct{
+      shape Shape
+      want float64
+    }{
+      {Rectangle{12, 6}, 72.0},
+      {Circle{10}, 314.1592653589793},
+    }
+  ```
     
 **Interfaces**
 
