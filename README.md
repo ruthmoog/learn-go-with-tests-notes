@@ -150,3 +150,20 @@ mySlice2 := make([]int, 5)
     Area() float64
     }```
 - using interfaces to declare only **what you need** is important design
+
+## Pointers & errors
+
+**Pointers**
+
+Unlike Java, Go creates copies of symbols, so to create Java-like behavior with references, you need to change the receiver type to a pointer
+
+```Go
+// Receiver type `*Wallet` is "a pointer to a wallet"
+func (w *Wallet) Deposit(amount int) {
+	w.balance += amount
+}
+```
+
+- In your print strings you can use `&w` as an arg for `%p` placeholder;
+  - `&w` this syntax creates a pointer to a wallet
+  - use e.g. `fmt.Printf("%p \n", &wallet)` to get visibility of the address in memory
