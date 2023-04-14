@@ -171,3 +171,15 @@ func (w *Wallet) Deposit(amount int) {
 **Errors**
 
 - `nil`s cause _runtime panic_s in Go just like `null`s cause _null pointer_s in Java
+- Error messages can be assigned to package-global variables: `var MyError = errors.New("oh dear")`
+- You can use a program like `errcheck` on the command line to check your error test coverage
+  - unchecked errors: 
+  ```Bash
+  % errcheck ./...              
+  pointersanderrors/wallet_test.go:38:18:	wallet.Withdraw(Bitcoin(10))
+  ```
+  - happy path: 
+  ```Bash
+  % errcheck ./...
+  %              
+  ```
