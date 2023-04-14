@@ -167,3 +167,7 @@ func (w *Wallet) Deposit(amount int) {
 - In your print strings you can use `&w` as an arg for `%p` placeholder;
   - `&w` this syntax creates a pointer to a wallet
   - use e.g. `fmt.Printf("%p \n", &wallet)` to get visibility of the address in memory
+
+**Errors**
+
+- `nil`s cause _runtime panic_s in Go just like `null`s cause _null pointer_s in Java
