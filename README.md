@@ -200,4 +200,5 @@ func (w *Wallet) Deposit(amount int) {
     // or using `make`
     var m = make(map[string]string)
   ```
+- Go has a built-in function delete that works on maps `delete(map, key)`
 
