@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/arrays-and-slices#:~:text=change%20SumAll%20to-,SumAllTails,-%2C%20where%20it%20will)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/maps#write-the-test-first-2)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -186,4 +186,18 @@ func (w *Wallet) Deposit(amount int) {
 
 ## Maps
 
-Keys are comparable types: all keys in the map need to be of the same (comparable) type - but the values don't have to be
+- Keys are comparable types: all keys in the map need to be of the same (comparable) type - but the values don't have to be
+- Add to a map by specifying the key and set it equal to the value:
+  - ```go
+    dictionary["cat"] = "soft and sleepy cuddle monster"
+  ``` 
+- `nil` maps will read like an empty map but attempting to write to a `nil` map will make a runtime panic
+  - avoid initialising an empty map like `var m map[string]string` by:
+  - ```go
+    // always adding {}
+    var m map[string]string{}
+    
+    // or using `make`
+    var m = make(map[string]string)
+  ```
+
