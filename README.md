@@ -183,3 +183,7 @@ func (w *Wallet) Deposit(amount int) {
   % errcheck ./...
   %              
   ```
+
+## Maps
+
+Keys are comparable types: all keys in the map need to be of the same (comparable) type - but the values don't have to be
