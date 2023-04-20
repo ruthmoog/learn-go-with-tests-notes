@@ -13,6 +13,13 @@
   - the testing framework gives you a `t` you can call methods on
 - `*testing.TB` is an interface combo of `T` test and `B` benchmark
 - `t.Helper` required for safe debugging with helper methods
+  
+*useful shortcuts...*
+
+- `cmd` + `1` => hide/show project tree
+- `cmd` + `e` => view recent files
+- `ctrl` + `shift` + `r` => run tests
+- `cmd` + `b` => jump to declaration
 
 *General testing tips...*
 
@@ -202,3 +209,14 @@ func (w *Wallet) Deposit(amount int) {
   ```
 - Go has a built-in function delete that works on maps `delete(map, key)`
 
+
+## Dependency Injection
+
+- injecting a dependency allowed us to
+  - test the code
+    - hard-wired dependencies or global state make testing hard, DI will let you mock a dependency via an interface
+  - separate concerns
+    - decouple where the data goes from how its generated
+    - enable single responsibility principle
+  - enable re-use... including in tests!
+    - more dependencies can be injected as the requirements grow
