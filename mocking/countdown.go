@@ -1,6 +1,6 @@
-package main
+package mocking
 
-//package mocking
+//package main
 
 import (
 	"fmt"

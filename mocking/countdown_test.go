@@ -1,4 +1,6 @@
-package main
+package mocking
+
+//package main
 
 import (
 	"bytes"
