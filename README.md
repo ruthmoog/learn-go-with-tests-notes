@@ -30,7 +30,9 @@
     sum := Add(1, 5)
     fmt.Println(sum)
     // Output: 6
-    } ```
+    }
+     ```
+- Go lets you test private functions ... but you shouldn't because it's healthier to test public _behaviour_
     
 *General Go tips...*
 
@@ -223,8 +225,13 @@ func (w *Wallet) Deposit(amount int) {
 
 ## Mocking
 
-- Spies: record how a dependency is used
-
 - Can use mocks to make tests faster than actual behaviour
   - e.g a test for countdown that takes 3 real seconds doesn't need to use those 3 seconds in the test
-
+  - and you can avoid slow/expensive feedback loops, like setting up dbs and waiting for responses
+- Too many mocks can indicate poor abstraction of the world you're modelling
+- If mocking is complicated it could be because...
+  - you have too many dependencies to mock (> 3 is a red flag) -> can the thing you're testing be responsible for less?
+  - dependencies are too fine-grained -> can they be consolidated into a meaningful module?
+  - you're testing implementation detail -> test behaviour not how its implemented
+- Spies should be used with caution, as they tighten the coupling between your test and the way the behaviour is implemented
+- Generate mocks against an interface - thats all you need!
