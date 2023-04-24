@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/maps#write-the-test-first-2)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/mocking)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -220,3 +220,11 @@ func (w *Wallet) Deposit(amount int) {
     - enable single responsibility principle
   - enable re-use... including in tests!
     - more dependencies can be injected as the requirements grow
+
+## Mocking
+
+- Spies: record how a dependency is used
+
+- Can use mocks to make tests faster than actual behaviour
+  - e.g a test for countdown that takes 3 real seconds doesn't need to use those 3 seconds in the test
+
