@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/concurrency)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/select)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -235,3 +235,18 @@ func (w *Wallet) Deposit(amount int) {
   - you're testing implementation detail -> test behaviour not how its implemented
 - Spies should be used with caution, as they tighten the coupling between your test and the way the behaviour is implemented
 - Generate mocks against an interface - thats all you need!
+
+## Concurrency
+
+- _blocking_ operations need to finish before the next op can start
+  - non blocking ops run in a _goroutine_ process, that reads through code like a gemino curse :D
+    - to start a new _goroutine_ use the `go` call before the function call
+    - _goroutines_ are often used with _anonymous functions_ which remain in their existing scope:
+    - ```go
+      go func() {
+        doSomething()
+      }()
+    ``` 
+- a _race condition_ bug is when output is dependent on timing/sequence which isn't controlled
+  - use go's race detector, `go test -race` to get feedback and visibility
+  - use _channels_, a data structure that can send and receive values & therefore communicate between processes
