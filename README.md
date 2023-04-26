@@ -49,6 +49,7 @@
   - you can have methods with the same name in their own packages
   - you can define methods on the type instead, eg shapes' _Rectangle struct_
 
+
 **TDD Cycle**
 
 1. Write a test -> Make compiler pass 
@@ -250,3 +251,11 @@ func (w *Wallet) Deposit(amount int) {
 - a _race condition_ bug is when output is dependent on timing/sequence which isn't controlled
   - use go's race detector, `go test -race` to get feedback and visibility
   - use _channels_, a data structure that can send and receive values & therefore communicate between processes
+
+## Select
+
+- Use `defer` keyword to keep a call inline but move the action to the end - eg defer close, when you opened a server
+- you cannot send to `nil` channels, so always `make` them
+- `chan struct{}` is the smalled data type in memory (there is no zero value to be initialised with)
+- `var := <-ch` is a _blocking_ call
+- `select` allows you to wait on multiple channels - the first to send a value wins
