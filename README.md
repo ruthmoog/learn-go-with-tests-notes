@@ -259,3 +259,14 @@ func (w *Wallet) Deposit(amount int) {
 - `chan struct{}` is the smalled data type in memory (there is no zero value to be initialised with)
 - `var := <-ch` is a _blocking_ call
 - `select` allows you to wait on multiple channels - the first to send a value wins
+  - add `time.After` in one of the `cases` so you're not blocked forever
+  - ```go
+    select {
+    case <-doSomething(a):
+      return a
+    case <-time.After(10 * time.Seconds):
+      return "too slow!"
+    }
+  ```
+- `httptest` lets you create test servers that are consistent with _real_ http servers
+  
