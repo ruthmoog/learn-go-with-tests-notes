@@ -270,3 +270,8 @@ func (w *Wallet) Deposit(amount int) {
   ```
 - `httptest` lets you create test servers that are consistent with _real_ http servers
   
+## Reflection
+
+- `interface{}` can be used as a placeholder for any type
+- `any` is an alias for `interface{}`
+- 
