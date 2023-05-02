@@ -90,4 +90,32 @@ func TestWalk(t *testing.T) {
 			}
 		})
 	}
+
+	t.Run("with maps", func(t *testing.T) {
+		aMap := map[string]string{
+			"Pig": "Oink",
+			"Cow": "Moo",
+		}
+
+		var got []string
+		walk(aMap, func(input string) {
+			got = append(got, input)
+		})
+
+		assertContains(t, got, "Oink")
+		assertContains(t, got, "Moo")
+	})
+}
+
+func assertContains(tb testing.TB, haystack []string, needle string) {
+	tb.Helper()
+	contains := false
+	for _, x := range haystack {
+		if x == needle {
+			contains = true
+		}
+	}
+	if !contains {
+		tb.Errorf("expected %+v to contain %q but it didnt!", haystack, needle)
+	}
 }
