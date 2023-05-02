@@ -105,6 +105,27 @@ func TestWalk(t *testing.T) {
 		assertContains(t, got, "Oink")
 		assertContains(t, got, "Moo")
 	})
+
+	t.Run("with channels", func(t *testing.T) {
+		aChannel := make(chan Profile)
+
+		go func() {
+			aChannel <- Profile{33, "Berlin"}
+			aChannel <- Profile{34, "Astana"}
+			close(aChannel)
+		}()
+
+		var got []string
+		want := []string{"Berlin", "Astana"}
+		
+		walk(aChannel, func(input string) {
+			got = append(got, input)
+		})
+
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("expected %v, but got %v", want, got)
+		}
+	})
 }
 
 func assertContains(tb testing.TB, haystack []string, needle string) {
