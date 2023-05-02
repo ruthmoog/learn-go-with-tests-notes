@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/reflection)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/sync)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -274,4 +274,5 @@ func (w *Wallet) Deposit(amount int) {
 
 - `interface{}` can be used as a placeholder for any type
 - `any` is an alias for `interface{}`
-- 
+- Go has a `reflect` package for when you have no way of knowing what types might exist
+- Avoid reflection though because it adds a lot of complexity and code can break in unanticipated ways
