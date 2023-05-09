@@ -286,3 +286,8 @@ func (w *Wallet) Deposit(amount int) {
         value int
       }
       ```
+- `Mutex` (mutual exclusion) allows us to add locks to our data
+  - Use channels when passing ownership of data
+  - Use mutexes for managing state
+- `WaitGroup` is a means of waiting for goroutines to finish jobs
+- Use `go vet` to check for bugs
