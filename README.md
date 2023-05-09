@@ -276,3 +276,5 @@ func (w *Wallet) Deposit(amount int) {
 - `any` is an alias for `interface{}`
 - Go has a `reflect` package for when you have no way of knowing what types might exist
 - Avoid reflection though because it adds a lot of complexity and code can break in unanticipated ways
+
+## Sync
