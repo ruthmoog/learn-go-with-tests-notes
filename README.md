@@ -30,8 +30,7 @@
     sum := Add(1, 5)
     fmt.Println(sum)
     // Output: 6
-    }
-     ```
+    }```
 - Go lets you test private functions ... but you shouldn't because it's healthier to test public _behaviour_
     
 *General Go tips...*
@@ -63,22 +62,23 @@
 run from the containing directory:
 
 ```go
-func BenchmarkRepeat(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Repeat("❤️")
-	}
-}
+  func BenchmarkRepeat(b *testing.B) {
+      for i := 0; i < b.N; i++ {
+          Repeat("❤️")
+      }
+  }
 ```
-```bash
-% go test -bench=.
 
-goos: darwin
-goarch: arm64
-pkg: hello/iteration
-BenchmarkRepeat-8       14493148                82.71 ns/op
-PASS
-ok      hello/iteration 2.430s
-```
+```bash
+  % go test -bench=.
+  
+  goos: darwin
+  goarch: arm64
+  pkg: hello/iteration
+  BenchmarkRepeat-8       14493148                82.71 ns/op
+  PASS
+  ok      hello/iteration 2.430s
+  ```
 
 ### Coverage
 
@@ -278,3 +278,11 @@ func (w *Wallet) Deposit(amount int) {
 - Avoid reflection though because it adds a lot of complexity and code can break in unanticipated ways
 
 ## Sync
+
+- embedding types means the methods of that type becomes part of the public interface; and you often will not want that
+  - ```go
+      type Counter struct {
+        sync.Mutex // embedded, and not private!
+        value int
+      }
+      ```
