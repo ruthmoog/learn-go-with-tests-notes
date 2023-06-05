@@ -300,4 +300,4 @@ func (w *Wallet) Deposit(amount int) {
     case <-ctx.Done():
       store.Cancel()
     ```
-- 
+- Incoming requests to a server should create a Context, and outgoing calls to servers should accept a Context.
