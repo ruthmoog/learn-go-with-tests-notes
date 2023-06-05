@@ -249,7 +249,6 @@ func (w *Wallet) Deposit(amount int) {
       }()
     ``` 
 - a _race condition_ bug is when output is dependent on timing/sequence which isn't controlled
-  - use go's race detector, `go test -race` to get feedback and visibility
   - use _channels_, a data structure that can send and receive values & therefore communicate between processes
 
 ## Select
@@ -301,3 +300,9 @@ func (w *Wallet) Deposit(amount int) {
       store.Cancel()
     ```
 - Incoming requests to a server should create a Context, and outgoing calls to servers should accept a Context.
+- If you use `ctx.Value`, you’re fired
+  - The problem with `context.Values` is it's an untyped map, so you have no type-safety and you have to handle it _not containing your value_.
+  - You have to create a coupling of map keys from one module to another and if someone changes something things start breaking.
+  - if a function needs some values, put them as **typed parameters** rather than trying to fetch them from `context.Value`. This makes it statically checked and documented for everyone to see.
+  - It can be helpful to include information that is orthogonal to a request in a context, such as a trace id
+  - `Context.Value` should _inform_, not _control_. it's for maintainers not users.
