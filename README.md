@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/sync)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/context)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -291,3 +291,6 @@ func (w *Wallet) Deposit(amount int) {
   - Use mutexes for managing state
 - `WaitGroup` is a means of waiting for goroutines to finish jobs
 - Use `go vet` to check for bugs
+
+## Context
+
