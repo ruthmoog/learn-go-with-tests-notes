@@ -294,3 +294,10 @@ func (w *Wallet) Deposit(amount int) {
 
 ## Context
 
+- It's important that you derive your contexts so that cancellations are propagated throughout the call stack for a given request.
+- `context.Done()` returns a channel: listen on the channel for a "done" or "cancelled" signal then call `store.Cancel` if we got one:
+  - ```go
+    case <-ctx.Done():
+      store.Cancel()
+    ```
+- 
