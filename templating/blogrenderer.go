@@ -1,7 +1,7 @@
 package templating
 
 import (
-	"fmt"
+	"html/template"
 	"io"
 )
 
@@ -10,7 +10,18 @@ type Song struct {
 	Lyrics string
 }
 
+const songTemplate = `<h1>{{.Title}}</h1><p>{{.Lyrics}}</p>`
+
 func Render(writer io.Writer, song Song) error {
-	_, err := fmt.Fprintf(writer, "<h1>%s</h1><p>%s</p>", song.Title, song.Lyrics)
-	return err
+	templ, err := template.New("Song").Parse(songTemplate)
+
+	if err != nil {
+		return err
+	}
+
+	if err := templ.Execute(writer, song); err != nil {
+		return err
+	}
+
+	return nil
 }
