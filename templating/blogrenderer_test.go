@@ -2,6 +2,7 @@ package templating_test
 
 import (
 	"bytes"
+	approvals "github.com/approvals/go-approval-tests"
 	"hello/templating"
 	"testing"
 )
@@ -22,12 +23,6 @@ func TestRender(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		got := buf.String()
-		want := "<h1>hello world</h1>" +
-			"<p>This is a song</p>"
-
-		if got != want {
-			t.Errorf("got '%s' but wanted '%s'", got, want)
-		}
+		approvals.VerifyString(t, buf.String())
 	})
 }
