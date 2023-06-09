@@ -1,8 +1,14 @@
 package templating
 
 import (
+	"embed"
 	"html/template"
 	"io"
+)
+
+var (
+	//go:embed "templates/*"
+	songTemplates embed.FS
 )
 
 type Song struct {
@@ -10,10 +16,8 @@ type Song struct {
 	Lyrics string
 }
 
-const songTemplate = `<h1>{{.Title}}</h1><p>{{.Lyrics}}</p>`
-
 func Render(writer io.Writer, song Song) error {
-	templ, err := template.New("Song").Parse(songTemplate)
+	templ, err := template.ParseFS(songTemplates, "templates/*.gohtml")
 
 	if err != nil {
 		return err
