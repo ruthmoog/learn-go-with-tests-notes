@@ -11,6 +11,6 @@ type Song struct {
 }
 
 func Render(writer io.Writer, song Song) error {
-	_, err := fmt.Fprintf(writer, "<h1>%s</h1>", song.Title)
+	_, err := fmt.Fprintf(writer, "<h1>%s</h1><p>%s</p>", song.Title, song.Lyrics)
 	return err
 }
