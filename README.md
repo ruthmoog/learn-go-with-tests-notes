@@ -306,3 +306,9 @@ func (w *Wallet) Deposit(amount int) {
   - if a function needs some values, put them as **typed parameters** rather than trying to fetch them from `context.Value`. This makes it statically checked and documented for everyone to see.
   - It can be helpful to include information that is orthogonal to a request in a context, such as a trace id
   - `Context.Value` should _inform_, not _control_. it's for maintainers not users.
+
+
+## Templating
+
+- Use approval tests import `approvals "github.com/approvals/go-approval-tests"` and you can `approvals.VerifyString(t, buf.String())
+  - You can compare the approval files by highlighting both in the project view and `cmd` + `D` to dif the two files  
