@@ -23,7 +23,7 @@ func Render(writer io.Writer, song Song) error {
 		return err
 	}
 
-	if err := templ.Execute(writer, song); err != nil {
+	if err := templ.ExecuteTemplate(writer, "songbook.gohtml", song); err != nil {
 		return err
 	}
 
