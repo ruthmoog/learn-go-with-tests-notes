@@ -2,6 +2,7 @@ package introtopropertybasedtests
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 	"testing/quick"
 )
@@ -78,6 +79,28 @@ func TestPropertiesOfConversion(t *testing.T) {
 	}
 
 	if err := quick.Check(assertion, nil); err != nil {
+		t.Error("failed checks", err)
+	}
+}
+
+func TestPropertiesOfConsecutiveSymbols(t *testing.T) {
+
+	assertion := func(arabic uint16) bool {
+		if arabic > 3999 {
+			return true
+		}
+		roman := ConvertToRoman(arabic)
+		t.Log("testing", roman, arabic)
+
+		if strings.Contains(roman, "IIII") || strings.Contains(roman, "VVVV") || strings.Contains(roman, "XXXX") || strings.Contains(roman, "MMMM") || strings.Contains(roman, "CCCC") || strings.Contains(roman, "DDDD") || strings.Contains(roman, "LLLL") {
+			return false
+		}
+		return true
+	}
+
+	if err := quick.Check(assertion, &quick.Config{
+		MaxCount: 1000,
+	}); err != nil {
 		t.Error("failed checks", err)
 	}
 }
