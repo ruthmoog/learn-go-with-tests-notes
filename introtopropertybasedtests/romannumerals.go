@@ -1,8 +1,20 @@
 package introtopropertybasedtests
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type RomanNumerals []RomanNumeral
+
+type Uintnumeral uint16
+
+func NewUintnumeral(number uint16) (Uintnumeral, error) {
+	if number > 3999 {
+		return 0, fmt.Errorf("that number is not roman")
+	}
+	return Uintnumeral(number), nil
+}
 
 func (r RomanNumerals) ValueOf(symbols ...byte) uint16 {
 	symbol := string(symbols)
