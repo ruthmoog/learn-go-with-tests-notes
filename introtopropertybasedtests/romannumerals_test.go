@@ -84,6 +84,15 @@ func TestPropertiesOfConversion(t *testing.T) {
 }
 
 func TestPropertiesOfConsecutiveSymbols(t *testing.T) {
+	disallowedConsecutiveSymbols := []string{
+		"IIII",
+		"VVVV",
+		"XXXX",
+		"MMMM",
+		"CCCC",
+		"DDDD",
+		"LLLL",
+	}
 
 	assertion := func(arabic uint16) bool {
 		if arabic > 3999 {
@@ -92,8 +101,10 @@ func TestPropertiesOfConsecutiveSymbols(t *testing.T) {
 		roman := ConvertToRoman(arabic)
 		t.Log("testing", roman, arabic)
 
-		if strings.Contains(roman, "IIII") || strings.Contains(roman, "VVVV") || strings.Contains(roman, "XXXX") || strings.Contains(roman, "MMMM") || strings.Contains(roman, "CCCC") || strings.Contains(roman, "DDDD") || strings.Contains(roman, "LLLL") {
-			return false
+		for _, symbol := range disallowedConsecutiveSymbols {
+			if strings.Contains(roman, symbol) {
+				return false
+			}
 		}
 		return true
 	}
