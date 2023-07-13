@@ -312,3 +312,9 @@ func (w *Wallet) Deposit(amount int) {
 
 - Use approval tests import `approvals "github.com/approvals/go-approval-tests"` and you can `approvals.VerifyString(t, buf.String())
   - You can compare the approval files by highlighting both in the project view and `cmd` + `D` to dif the two files  
+
+## Math
+
+- `encoding/xml` is the Go package for simple XML parsing
+  - `zek` is a program that automates writing XML structure
+  - so is https://xml-to-go.github.io/

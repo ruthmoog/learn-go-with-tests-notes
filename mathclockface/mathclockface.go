@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-const secondHandLength = 90
-const clockCentreX = 150
-const clockCentreY = 150
-
 // A Point represents a two-dimensional Cartesian coordinate
 type Point struct {
 	X float64
