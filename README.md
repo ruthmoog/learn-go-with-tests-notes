@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/math#repeat-for-new-requirements-1)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/math#repeat-for-new-requirements-1:~:text=Three%20things%20stick%20out%3A)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
