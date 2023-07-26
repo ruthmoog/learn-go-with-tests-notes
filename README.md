@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/math#repeat-for-new-requirements-1:~:text=Three%20things%20stick%20out%3A)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/reading-files)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -318,3 +318,14 @@ func (w *Wallet) Deposit(amount int) {
 - `encoding/xml` is the Go package for simple XML parsing
   - `zek` is a program that automates writing XML structure
   - so is https://xml-to-go.github.io/
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="100%"
+     height="100%"
+     viewBox="0 0 300 300"
+     version="2.0"><circle cx="150" cy="150" r="100" style="fill:#fff;stroke:#000;stroke-width:5px;"/><line x1="150" y1="150" x2="240.000" y2="150.000" style="fill:none;stroke:#f00;stroke-width:3px;"/><line x1="150" y1="150" x2="226.706" y2="127.279" style="fill:none;stroke:#000;stroke-width:3px;"/><line x1="150" y1="150" x2="170.237" y2="195.722" style="fill:none;stroke:#000;stroke-width:4px;"/></svg>
+
+```
+
+![Screen shot of the final clock face](mathSVGclockface.png)
