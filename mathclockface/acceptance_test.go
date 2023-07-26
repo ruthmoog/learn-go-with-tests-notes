@@ -62,14 +62,40 @@ func TestSVGWriterSecondHand(t *testing.T) {
 	}
 }
 
-//func TestSVGWriterMinuteHand(t *testing.T) {
+func TestSVGWriterMinuteHand(t *testing.T) {
+	cases := []struct {
+		time time.Time
+		line Line
+	}{
+		{
+			simpleTime(0, 0, 0),
+			Line{150, 150, 150, 70},
+		},
+	}
+
+	for _, c := range cases {
+		t.Run(testName(c.time), func(t *testing.T) {
+			b := bytes.Buffer{}
+			mathclockface.SVGWriter(&b, c.time)
+
+			svg := SVG{}
+			xml.Unmarshal(b.Bytes(), &svg)
+
+			if !containsLine(c.line, svg.Line) {
+				t.Errorf("Expected to find the minute hand line %+v, in the SVG lines %+v", c.line, svg.Line)
+			}
+		})
+	}
+}
+
+//func TestSVGWriterHourHand(t *testing.T) {
 //	cases := []struct {
 //		time time.Time
 //		line Line
 //	}{
 //		{
-//			simpleTime(0, 0, 0),
-//			Line{150, 150, 150, 70},
+//			simpleTime(6, 0, 0),
+//			Line{150, 150, 150, 200},
 //		},
 //	}
 //
@@ -82,7 +108,7 @@ func TestSVGWriterSecondHand(t *testing.T) {
 //			xml.Unmarshal(b.Bytes(), &svg)
 //
 //			if !containsLine(c.line, svg.Line) {
-//				t.Errorf("Ecpected to find the minute hand line %+v, in the SVG lines %+v", c.line, svg.Line)
+//				t.Errorf("Expected to find the hour hand line %+v, in the SVG lines %+v", c.line, svg.Line)
 //			}
 //		})
 //	}
