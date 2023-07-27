@@ -10,29 +10,26 @@ import (
 func TestPostsFromFS(t *testing.T) {
 
 	t.Run("happy path", func(t *testing.T) {
-		fs := fstest.MapFS{
+		fileSystem := fstest.MapFS{
 			"hello-world.md": {Data: []byte(
 				`Title: Hello, World!
 Description: donkeys`)},
 			//"hello-twitch.md": {Data: []byte("Title: Hello, Twitch!")},
 		}
-		posts, err := PostsFromFS(fs)
+		posts, err := PostsFromFS(fileSystem)
 
 		if err != nil {
 			t.Fatal(err)
 		}
 
-		if len(posts) != len(fs) {
-			t.Errorf("Expected %d posts, got %d posts", len(fs), len(posts))
+		if len(posts) != len(fileSystem) {
+			t.Errorf("Expected %d posts, got %d posts", len(fileSystem), len(posts))
 		}
 
-		expectedFirstPost := Post{
+		assertPost(t, posts[0], Post{
 			Title:       "Hello, World!",
 			Description: "donkeys",
-		}
-		if posts[0] != expectedFirstPost {
-			t.Errorf("expected %#v, but got %#v", expectedFirstPost, posts[0])
-		}
+		})
 	})
 
 	t.Run("Error handling", func(t *testing.T) {
@@ -43,8 +40,15 @@ Description: donkeys`)},
 	})
 }
 
+func assertPost(t *testing.T, got, want Post) {
+	t.Helper()
+	if got != want {
+		t.Errorf("got %#v but wanted %#v", got, want)
+	}
+}
+
 type FailingFS struct{}
 
-func (f FailingFS) Open(name string) (fs.File, error) {
+func (f FailingFS) Open(string) (fs.File, error) {
 	return nil, errors.New("I always fail")
 }
