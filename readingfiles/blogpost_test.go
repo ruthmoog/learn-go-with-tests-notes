@@ -19,7 +19,13 @@ Tags: tdd, go
 ---
 Hello
 body ody ody`)},
-			//"hello-twitch.md": {Data: []byte("Title: Hello, Twitch!")},
+			"hello-world2.md": {Data: []byte(
+				`Title: Hello, Tworld!
+Description: rabbits
+Tags: tdd, go
+---
+Hello hello
+rabbits have long ears`)},
 		}
 		posts, err := PostsFromFS(fileSystem)
 
