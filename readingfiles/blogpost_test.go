@@ -7,11 +7,13 @@ import (
 	"testing/fstest"
 )
 
-func TestBlogPosts(t *testing.T) {
+func TestPostsFromFS(t *testing.T) {
 
 	t.Run("happy path", func(t *testing.T) {
 		fs := fstest.MapFS{
-			"hello-world.md": {Data: []byte("Title: Hello, World!")},
+			"hello-world.md": {Data: []byte(
+				`Title: Hello, World!
+Description: donkeys`)},
 			//"hello-twitch.md": {Data: []byte("Title: Hello, Twitch!")},
 		}
 		posts, err := PostsFromFS(fs)
@@ -24,7 +26,10 @@ func TestBlogPosts(t *testing.T) {
 			t.Errorf("Expected %d posts, got %d posts", len(fs), len(posts))
 		}
 
-		expectedFirstPost := Post{Title: "Hello, World!"}
+		expectedFirstPost := Post{
+			Title:       "Hello, World!",
+			Description: "donkeys",
+		}
 		if posts[0] != expectedFirstPost {
 			t.Errorf("expected %#v, but got %#v", expectedFirstPost, posts[0])
 		}
