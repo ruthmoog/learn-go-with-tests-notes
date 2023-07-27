@@ -15,7 +15,10 @@ func TestPostsFromFS(t *testing.T) {
 			"hello-world.md": {Data: []byte(
 				`Title: Hello, World!
 Description: donkeys
-Tags: tdd, go`)},
+Tags: tdd, go
+---
+Hello
+body ody ody`)},
 			//"hello-twitch.md": {Data: []byte("Title: Hello, Twitch!")},
 		}
 		posts, err := PostsFromFS(fileSystem)
@@ -32,6 +35,7 @@ Tags: tdd, go`)},
 			Title:       "Hello, World!",
 			Description: "donkeys",
 			Tags:        []string{"tdd", "go"},
+			Body:        "Hello\nbody ody ody",
 		})
 	})
 
