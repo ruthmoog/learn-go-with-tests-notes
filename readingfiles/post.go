@@ -9,7 +9,14 @@ import (
 type Post struct {
 	Title       string
 	Description string
+	Tags        []string
 }
+
+const (
+	titlePrefix       = "Title: "
+	descriptionPrefix = "Description: "
+	tagsPrefix        = "Tags: "
+)
 
 func newPost(blogFile io.Reader) Post {
 	scanner := bufio.NewScanner(blogFile)
@@ -20,7 +27,8 @@ func newPost(blogFile io.Reader) Post {
 	}
 
 	return Post{
-		Title:       readline("Title: "),
-		Description: readline("Description: "),
+		Title:       readline(titlePrefix),
+		Description: readline(descriptionPrefix),
+		Tags:        strings.Split(readline(tagsPrefix), ", "),
 	}
 }

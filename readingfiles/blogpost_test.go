@@ -3,6 +3,7 @@ package readingfiles
 import (
 	"errors"
 	"io/fs"
+	"reflect"
 	"testing"
 	"testing/fstest"
 )
@@ -13,7 +14,8 @@ func TestPostsFromFS(t *testing.T) {
 		fileSystem := fstest.MapFS{
 			"hello-world.md": {Data: []byte(
 				`Title: Hello, World!
-Description: donkeys`)},
+Description: donkeys
+Tags: tdd, go`)},
 			//"hello-twitch.md": {Data: []byte("Title: Hello, Twitch!")},
 		}
 		posts, err := PostsFromFS(fileSystem)
@@ -29,6 +31,7 @@ Description: donkeys`)},
 		assertPost(t, posts[0], Post{
 			Title:       "Hello, World!",
 			Description: "donkeys",
+			Tags:        []string{"tdd", "go"},
 		})
 	})
 
@@ -42,7 +45,7 @@ Description: donkeys`)},
 
 func assertPost(t *testing.T, got, want Post) {
 	t.Helper()
-	if got != want {
+	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %#v but wanted %#v", got, want)
 	}
 }
