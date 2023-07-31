@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/html-templates)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/revisiting-arrays-and-slices-with-generics)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -329,3 +329,28 @@ func (w *Wallet) Deposit(amount int) {
 ```
 
 ![Screen shot of the final clock face](mathSVGclockface.png)
+
+
+## Generics
+
+- Go gives us type safety
+- you can use `interface{}` to accept any types, but 
+  - :!: no information at compile time as to what kind of data
+  - :!: challenging and bug-prone because we've lost our constraints
+  - :!: more likely to have runtime errors which could affect our users, cause outages...
+- `Generics`... 
+  - are a way to make abstractions but _describe our constraints_
+  - allow us to write functions that have a similar level of flexibility that `interface{}` offers but retain type-safety and provide a better developer experience for callers.
+- infers the type wanted is given by the caller
+
+eg. 
+
+```go
+func AssertNotEqual[T any](got, want T)
+```
+or
+
+```go
+// comparable types you can compare using == operator
+func AssertNotEqual[T comparable](got, want T)
+```
