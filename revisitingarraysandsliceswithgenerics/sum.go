@@ -14,17 +14,18 @@ func SumAll(numbers ...[]int) []int {
 	return sums
 }
 
+// SumAllTails calculates the sums of all but the
+// first number given a collection of slices.
 func SumAllTails(numbers ...[]int) []int {
-	var sums []int
-	for _, collection := range numbers {
+	sumTail := func(result, collection []int) []int {
 		if len(collection) == 0 {
-			sums = append(sums, 0)
+			return append(result, 0)
 		} else {
 			tail := collection[1:]
-			sums = append(sums, Sum(tail))
+			return append(result, Sum(tail))
 		}
 	}
-	return sums
+	return Reduce(numbers, sumTail, []int{})
 }
 
 func Reduce[A any](collection []A, function func(A, A) A, starterValue A) A {
