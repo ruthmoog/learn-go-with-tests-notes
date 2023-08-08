@@ -359,3 +359,6 @@ func AssertNotEqual[T comparable](got, want T)
 
 - `reduce` is also known as fold, accumulate, aggregate, compress, or inject
 - Using generics as a tool for simplifying code via the refactoring step is far more likely to guide you to useful improvements, rather than premature abstractions.
+- By adding a second type constraint on `reduce` This allows to Reduce from a collection of A into a B
+  - You can have an `A` and `B` that doesn't matter if they're the same `any` type, but _can_ be _different_ `any` types. 
+  - ```go func Reduce[A, B any](collection []A, accumulator func(B, A) B, initialValue B) B { ... }```
