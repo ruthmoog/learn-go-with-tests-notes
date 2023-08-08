@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/revisiting-arrays-and-slices-with-generics#further-applications-of-reduce)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/intro-to-acceptance-tests)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -362,3 +362,4 @@ func AssertNotEqual[T comparable](got, want T)
 - By adding a second type constraint on `reduce` This allows to Reduce from a collection of A into a B
   - You can have an `A` and `B` that doesn't matter if they're the same `any` type, but _can_ be _different_ `any` types. 
   - ```go func Reduce[A, B any](collection []A, accumulator func(B, A) B, initialValue B) B { ... }```
+- Use the TDD process to drive out real, specific behaviour that you actually need, in the refactoring stage you then might discover some useful abstractions to help tidy the code up. 
