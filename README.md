@@ -1,6 +1,6 @@
 # Learn Go With Tests
 
-[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/revisiting-arrays-and-slices-with-generics)
+[🔖](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/revisiting-arrays-and-slices-with-generics#further-applications-of-reduce)
 
 ## Go Fundamentals
 ### [Hello, World](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world)
@@ -354,3 +354,8 @@ or
 // comparable types you can compare using == operator
 func AssertNotEqual[T comparable](got, want T)
 ```
+
+## Revisiting arrays and slices with generics
+
+- `reduce` is also known as fold, accumulate, aggregate, compress, or inject
+- Using generics as a tool for simplifying code via the refactoring step is far more likely to guide you to useful improvements, rather than premature abstractions.
