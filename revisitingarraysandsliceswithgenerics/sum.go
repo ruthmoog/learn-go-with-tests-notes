@@ -7,11 +7,10 @@ func Sum(numbers []int) int {
 }
 
 func SumAll(numbers ...[]int) []int {
-	var sums []int
-	for _, collection := range numbers {
-		sums = append(sums, Sum(collection))
+	add := func(result, items []int) []int {
+		return append(result, Sum(items))
 	}
-	return sums
+	return Reduce(numbers, add, []int{})
 }
 
 // SumAllTails calculates the sums of all but the
@@ -21,7 +20,7 @@ func SumAllTails(numbers ...[]int) []int {
 		if len(collection) == 0 {
 			return append(result, 0)
 		} else {
-			tail := collection[1:]
+			tail := collection[1:] // everything after the 0 index item
 			return append(result, Sum(tail))
 		}
 	}
